@@ -1,6 +1,7 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import { welcomeElement } from './components/welcome';
+import { Component } from 'react';
 
 const user = {
   userName: 'John Doe',
@@ -9,24 +10,30 @@ const user = {
   userWeight: '175lbs'
 }
 
+function MyComponent (props) {
+    return (
+      <div>
+        <h1> {props.title} </h1> 
+        <button onClick={props.onButtonClicked}>(Click Me)</button>
+      </div>
+    );
+  }
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          create-react-app
-        </a>
-        { welcomeElement(user) }
-      </header>
-    </div>
+  
+  const oBC = () => {
+    console.log('Clicked Now!');
+  };
+
+    return (
+      <main className="App">
+        <header>
+          <MyComponent title="React Playground" onButtonClicked={oBC}/>
+        </header>
+
+        {welcomeElement(user)}
+        
+      </main>
   );
 }
 
